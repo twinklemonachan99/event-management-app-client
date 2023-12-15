@@ -15,11 +15,7 @@ app.use(cors({
     methods: ['GET', 'POST','PUT','DELETE'], // Add other HTTP methods as needed
     allowedHeaders: ['Content-Type', 'Authorization'], // Add 'Content-Type' to allowed headers
   }));
-// app.use(cors());
-// const port = process.env.PORT || 56796;
-// app.listen(port, () => {
-//   console.log(`Server is running on port ${port}`);
-// });
+
 mongoose.connect("mongodb+srv://user1:user1password@cluster0.vj0tmua.mongodb.net/eventManagementDb?retryWrites=true&w=majority")   
     .then(() => {
         console.log('Connected to MongoDB')
@@ -40,5 +36,16 @@ app.post('/addroles',(req)=>{
             console.error('Error:', error);
         });
 });
+
+app.get('/getusers',(req,res) => {
+    userModel.find()
+    .then((data) => {
+        console.log("hudh",data[0])
+        res.json({ users: data });
+    })
+    .catch(() => {
+        console.log('Error fetching entries')
+    })
+})
 
 module.exports = app;

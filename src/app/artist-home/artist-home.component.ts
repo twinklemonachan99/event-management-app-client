@@ -7,8 +7,11 @@ import { EventManagementService } from '../services/api.service';
   styleUrls: ['./artist-home.component.css']
 })
 export class ArtistHomeComponent {
+  users :any
  constructor(private eventService:EventManagementService){
-
+  
+  this.users = this.getAllUsers();
+  console.log("users",this.users);
  }
   addArtist()
   {
@@ -16,5 +19,11 @@ export class ArtistHomeComponent {
       roleName:"User"
     }
     return this.eventService.addRoles(params);
+  }
+
+
+  getAllUsers()
+  {
+    return this.eventService.getUsers();
   }
 }

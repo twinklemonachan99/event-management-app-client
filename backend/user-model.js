@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Roles", // This references the Role model
     },
+    roleType:Number
     // Other fields related to the post
   });
 

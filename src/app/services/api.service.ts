@@ -28,4 +28,11 @@ export class EventManagementService{
                 return res;
         })
     }
+
+    getUsers()
+    {   
+        this.http.get<{message:any}>('http://localhost:50514/getusers').subscribe((res:any)=>{
+            console.log("data",res.users);
+        })
+    }
 }
